@@ -2,7 +2,6 @@ import {useAuthContext} from "../context/AuthContext";
 
 const Header = () => {
   const { user }= useAuthContext()
-  console.log(`el user desde el header es::: ${user.username}`)
   return (
     <div className="pt-12 pb-3 px-4 sm:py-8 flex font-bold font-josefin sm:items-center  text-xl sm:text-4xl justify-center drop-shadow-xl">
       <div className="flex items-center">
