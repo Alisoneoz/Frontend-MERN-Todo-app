@@ -23,7 +23,7 @@ const DisplayData = () => {
     title: "",
     description: "",
   });
-
+  
   useEffect(() => {
     if (!userToken) {
       setError("You must be logged in");
@@ -32,7 +32,7 @@ const DisplayData = () => {
       setError("");
       setIsLoading(true);
       try {
-        const response = await axios.get("http://localhost:5000/api/todoapp", {
+        const response = await axios.get("https://backend-todo-app-zd2a.onrender.com/api/todoapp", {
           headers: { Authorization: `Bearer ${userToken}` },
         });
         setTasks(response.data);
@@ -57,7 +57,7 @@ const DisplayData = () => {
     }
 
     axios
-      .delete(`http://localhost:5000/api/todoapp/${_id}`, {
+      .delete(`https://backend-todo-app-zd2a.onrender.com/api/todoapp/${_id}`, {
         headers: { Authorization: `Bearer ${userToken}` },
       })
       .then((res) => {
@@ -88,7 +88,7 @@ const DisplayData = () => {
   //fetch the task to update
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/todoapp/${isUpdating}`, {
+      .get(`https://backend-todo-app-zd2a.onrender.com/api/todoapp/${isUpdating}`, {
         headers: { Authorization: `Bearer ${userToken}` },
       })
       .then((res) => {
@@ -111,7 +111,7 @@ const DisplayData = () => {
       return;
     }
     axios
-      .put(`http://localhost:5000/api/todoapp/${isUpdating}`, taskToUpdate, {
+      .put(`https://backend-todo-app-zd2a.onrender.com/api/todoapp/${isUpdating}`, taskToUpdate, {
         headers: { Authorization: `Bearer ${userToken}` },
       })
       .then((res) => {
@@ -159,6 +159,8 @@ const DisplayData = () => {
           : ""
           ? isLoading
           : "sm:w-full h-full items-center"
+          ? tasks.length === 0
+          :"sm:w-full h-full items-center"
       }
     >
       {error ? (
