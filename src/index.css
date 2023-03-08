@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#special-style-overflow-wrap{
+ overflow-wrap: anywhere; 
+}
+
+
+
