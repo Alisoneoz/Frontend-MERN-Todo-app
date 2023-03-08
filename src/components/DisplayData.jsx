@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback} from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { useTaskContext } from "../context/TasksContext";
@@ -15,7 +15,6 @@ const DisplayData = () => {
   const { user, userToken } = useAuthContext();
   const { tasks, setTasks } = useTaskContext();
 
-  console.log(user);
   //State hooks for the update functionality
   const [isUpdating, setIsUpdating] = useState("");
   const [taskToUpdate, setTaskToUpdate] = useState({
@@ -23,38 +22,39 @@ const DisplayData = () => {
     description: "",
   });
   
+  //fetch data from API to render todo-list
+  const fetchData = useCallback(async () => {
+    setError("");
+    setIsLoading(true);
+    try {
+      const response = await axios.get("https://backend-todo-app-zd2a.onrender.com/api/todoapp", {
+        headers: { Authorization: `Bearer ${userToken}` },
+      });
+      setTasks(response.data);
+      setIsLoading(false);
+    } catch (err) {
+      console.log(err);
+      const errorMessage = err.response.data.error;
+      console.log(errorMessage);
+      setError(errorMessage);
+      setIsLoading(false);
+    }
+  },[setTasks, userToken]);
+
   useEffect(() => {
     if (!userToken) {
       setError("You must be logged in");
     }
-    const fetchData = async () => {
-      setError("");
-      setIsLoading(true);
-      try {
-        const response = await axios.get("https://backend-todo-app-zd2a.onrender.com/api/todoapp", {
-          headers: { Authorization: `Bearer ${userToken}` },
-        });
-        setTasks(response.data);
-        setIsLoading(false);
-      } catch (err) {
-        console.log(err);
-        const errorMessage = err.response.data.error;
-        console.log(errorMessage);
-        setError(errorMessage);
-        setIsLoading(false);
-      }
-    };
-
     if (userToken) {
       fetchData();
     }
-  }, [userToken]);
+  }, [userToken, fetchData]);
 
+  //Delete a Task
   const onDelete = (_id) => {
     if (!user) {
       return;
     }
-
     axios
       .delete(`https://backend-todo-app-zd2a.onrender.com/api/todoapp/${_id}`, {
         headers: { Authorization: `Bearer ${userToken}` },
@@ -85,7 +85,8 @@ const DisplayData = () => {
   };
 
   //fetch the task to update
-  useEffect(() => {
+
+  const fetchTaskToUpdate= useCallback(()=>{
     axios
       .get(`https://backend-todo-app-zd2a.onrender.com/api/todoapp/${isUpdating}`, {
         headers: { Authorization: `Bearer ${userToken}` },
@@ -95,14 +96,15 @@ const DisplayData = () => {
           title: res.data.title,
           description: res.data.description,
         });
-        console.log(
-          `esta es la task a update: ${(res.data.title, res.data.description)}`
-        );
       })
       .catch((err) => {
         console.log(err.response.data.error);
       });
-  }, [isUpdating]);
+  },[isUpdating, userToken]);
+  
+  useEffect(() => {
+    fetchTaskToUpdate();
+  }, [isUpdating, fetchTaskToUpdate]);
 
   const updateItem = (e) => {
     e.preventDefault();

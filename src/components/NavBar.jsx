@@ -6,10 +6,10 @@ import { useAuthContext } from "../context/AuthContext";
 import { useTaskContext } from "../context/TasksContext";
 const NavBar = () => {
   const [theme, setTheme] = useState(null);
-  const userTheme = localStorage.getItem("theme");
-
+  
   //set theme based on browser preferences
   useEffect(() => {
+    const userTheme = localStorage.getItem("theme");
     if (
       userTheme === "dark" ||
       window.matchMedia("(prefers-color-scheme: dark)").matches
