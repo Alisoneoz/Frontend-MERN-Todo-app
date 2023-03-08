@@ -35,17 +35,18 @@ const NavBar = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
-  const { userToken, setUserToken, setUser} = useAuthContext();
-  const { setTasks } = useTaskContext()
+  const { userToken, setUserToken, setUser } = useAuthContext();
+  const { setTasks } = useTaskContext();
   const navigate = useNavigate();
 
   //logout function
 
   const onLogout = () => {
     setUserToken(null);
-    setUser(null)
-    setTasks([])
+    setUser(null);
+    setTasks([]);
     localStorage.removeItem("user");
+    localStorage.removeItem("token");
     navigate("login");
   };
 
@@ -53,8 +54,12 @@ const NavBar = () => {
     <div className="flex justify-end items-center pt-5 font-semibold sm:text-xl text-base">
       {!userToken && (
         <div className="flex items-center ">
-          <NavLink to="/login" className=" px-1 sm:px-3">Login</NavLink>
-          <NavLink to="/register" className="px-1  sm:px-3">Register</NavLink>
+          <NavLink to="/login" className=" px-1 sm:px-3">
+            Login
+          </NavLink>
+          <NavLink to="/register" className="px-1  sm:px-3">
+            Register
+          </NavLink>
         </div>
       )}
 
