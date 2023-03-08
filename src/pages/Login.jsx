@@ -19,7 +19,7 @@ const Login = () => {
     setPasswordShown(!passwordShown);
   };
 
-  const { setUserToken, userToken, setUser, user } = useAuthContext();
+  const { setUserToken, setUser, user } = useAuthContext();
   const navigate = useNavigate();
 
   const onSubmit = (data, e) => {

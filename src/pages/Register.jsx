@@ -21,7 +21,7 @@ const Register = () => {
 
   const { setUser, setUserToken } = useAuthContext();
   const navigate = useNavigate();
-  const backendURL= "https://backend-todo-app-zd2a.onrender.com/";
+ 
   const onSubmit = (data, e) => {
     e.preventDefault();
     console.log(data);

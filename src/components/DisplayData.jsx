@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { BiLoaderCircle } from "react-icons/bi";
 import { ToastContainer, toast } from "react-toastify";
 import { useTaskContext } from "../context/TasksContext";
 import { useAuthContext } from "../context/AuthContext";
