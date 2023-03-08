@@ -21,12 +21,12 @@ const Register = () => {
 
   const { setUser, setUserToken } = useAuthContext();
   const navigate = useNavigate();
-
+  const backendURL= "https://backend-todo-app-zd2a.onrender.com/";
   const onSubmit = (data, e) => {
     e.preventDefault();
     console.log(data);
     axios
-      .post("http://localhost:5000/api/user/signup", data)
+      .post("https://backend-todo-app-zd2a.onrender.com/api/user/signup", data)
       .then((res) => {
         console.log(res.data.message);
         localStorage.setItem("user", JSON.stringify(res.data.token)); //you may choose the email too
@@ -47,7 +47,7 @@ const Register = () => {
       })
       .catch((err) => {
         const errorMessage = err.response.data.error;
-        console.log(err);
+        console.log(errorMessage);
         toast.error(errorMessage, {
           position: "top-center",
           autoClose: 8000,
@@ -102,7 +102,7 @@ const Register = () => {
 
 
 
-        <div>
+        <div className="mb-3">
           <label className="texl-base sm:text-xl font-bold">User Name</label>
           <input
             type= "text" 
@@ -119,7 +119,7 @@ const Register = () => {
         <div className="text-red-700 dark:text-red-500 font-semibold">
           {errors.username?.type === "required" && <p>User name is required</p>}
           {errors.username?.type === "checkLength" && (
-            <p>Please add a shorter user name (max 10 characters)</p>
+            <p>Please add a shorter user name (max 15 characters)</p>
           )}
 
         </div>
@@ -166,6 +166,7 @@ const Register = () => {
             </div>
           )}
         </div>
+
         <div className="mt-2">
           <button
             type="submit"

@@ -26,7 +26,7 @@ const Login = () => {
     e.preventDefault();
     console.log(data);
     axios
-      .post("http://localhost:5000/api/user/login", data)
+      .post("https://backend-todo-app-zd2a.onrender.com/api/user/login", data)
       .then((res) => {
         console.log(res.data.message);
         localStorage.setItem("token", JSON.stringify(res.data.token)); 
