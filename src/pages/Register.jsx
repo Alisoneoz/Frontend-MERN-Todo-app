@@ -62,8 +62,8 @@ const Register = () => {
   };
   return (
     <div className=" flex justify-center flex-col">
-      <div className="flex items-center justify-center text-lg sm:text-3xl font-bold mb-5 sm:mb-8 mt-10">
-        <h2 className=" pr-1 sm:pr-3 dark:text-specialGray-200">
+      <div className="flex items-center justify-center text-xl sm:text-3xl font-bold mb-5 sm:mb-8 mt-10">
+        <h2 className="pr-1 sm:pr-3 dark:text-specialGray-200">
           Welcome to your
         </h2>
 
@@ -74,11 +74,11 @@ const Register = () => {
       </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col justify-center mx-auto  py-14 px-9 drop-shadow-lg  bg-specialGray-100 dark:bg-purply-800 opacity-95  rounded-2xl w-2/3 sm:w-1/2 xl:w-1/3 font-semibold h-2/3"
+        className="flex flex-col justify-center mx-5 sm:mx-auto  py-14 px-4 sm:px-9 drop-shadow-lg  bg-specialGray-100 dark:bg-purply-800 opacity-95  rounded-2xl  sm:w-1/2 xl:w-1/3 font-semibold h-2/3"
       >
         <div className="text-center text-xl sm:text-2xl pb-3">Sign Up</div>
         <div className="flex flex-col mb-3">
-          <label className="texl-base sm:text-xl font-bold">Email</label>
+          <label className="text-base sm:text-xl font-bold">Email</label>
           <input
             type="text"
             name="email"
@@ -128,7 +128,7 @@ const Register = () => {
 
 
         <div className="relative">
-          <label className="texl-base sm:text-xl font-bold">Password</label>
+          <label className="text-base sm:text-xl font-bold">Password</label>
           <input
             type={passwordShown ? "text" : "password"}
             name="password"
@@ -176,7 +176,7 @@ const Register = () => {
           </button>
         </div>
         <div className="flex justify-center sm:justify-end items-center mt-5">
-          <p className="mr-4 text-sm sm:text-base">Already have an account?</p>
+          <p className="mr-4 text-base">Already have an account?</p>
           <NavLink
             to="/login"
             className="drop-shadow-lg cursor-pointer px-2 py-2 mt-1 rounded-lg text-specialGray-200 font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-center sm:hover:text-xl text-sm w-1/2 sm:w-fit"
