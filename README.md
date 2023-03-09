@@ -1,4 +1,4 @@
-# Frontend-MERN-Todo-app
+# Frontend-MERN-Todo-app [![Netlify Status](https://api.netlify.com/api/v1/badges/f6dd6a86-cf42-4897-ac44-8ff808e93ec2/deploy-status)](https://app.netlify.com/sites/todo-mern-app-alisoneoz/deploys)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
