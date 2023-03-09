@@ -4,6 +4,13 @@
 
 ![darkModeTodoAppAlisoneoz](https://user-images.githubusercontent.com/96319139/224118512-d68cd1d9-f33c-464c-a3d3-dd623f085f67.png)
 
+## Demo Link: 
+
+[Link](https://todo-mern-app-alisoneoz.netlify.app/login)
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
 
 
 
