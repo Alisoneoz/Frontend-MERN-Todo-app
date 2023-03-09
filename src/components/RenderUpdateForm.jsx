@@ -2,7 +2,7 @@ import React from "react";
 
 const RenderUpdateForm = ({ updateItem, taskToUpdate, handleChange}) => {
   return (
-    <form onSubmit={updateItem} className="text-black font-bold grid ">
+    <form onSubmit={updateItem} className="font-bold grid ">
     <label>Title</label>
     <input
       type="text"
